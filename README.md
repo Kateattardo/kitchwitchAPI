@@ -11,14 +11,23 @@ Bootstrap CSS
 # User Stories/ICEBOX
 
 -As a user, I want to sign up for an account to access KitchWitch.
+
 -As a user, I want to log in to my account and see my saved recipes and comments.
+
 -As a user, I want to search for recipes based on ingredients I have at home already.
+
 -As a user, I want to comment on recipes.
+
 -As a user, I want to see a list of my favorite recipes so I can access it quickly.
+
 -As a user, I want to create recipes using the info from the app.
+
 -As a user, I want to delete recipes from my favorites if I am no longer interested in them.
+
 -As a user, I want to rate recipes based on my level of enjoyment.
+
 -As a user, I want to set a timer to ensure correct cook time.
+
 -As a user I want the option to uplad a photo of the dish I have completed.
 
 # WIREFRAMES
