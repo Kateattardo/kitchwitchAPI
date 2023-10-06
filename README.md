@@ -8,7 +8,7 @@ Express
 MongoDB
 Bootstrap CSS
 
-# User Stories/ICEBOX
+# User Stories
 
 -As a user, I want to sign up for an account to access KitchWitch.
 
@@ -25,6 +25,8 @@ Bootstrap CSS
 -As a user, I want to delete recipes from my favorites if I am no longer interested in them.
 
 -As a user, I want to rate recipes based on my level of enjoyment.
+
+# ICEBOX
 
 -As a user, I want to set a timer to ensure correct cook time.
 
