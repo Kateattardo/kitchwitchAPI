@@ -6,6 +6,7 @@ const cors = require('cors')
 // require route files
 const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
+const ingredientRoutes = require('./app/routes/ingredient_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -35,7 +36,7 @@ mongoose.connect(db, {
 const app = express()
 
 // set CORS headers on response from this API using the `cors` NPM package
-// `CLIENT_ORIGIN` is an environment variable that will be set on Heroku
+// `CLIENT_ORIGIN` is an environment variable that will be set on deployment.
 app.use(
 	cors({
 		origin: process.env.CLIENT_ORIGIN || `http://localhost:${clientDevPort}`,
@@ -66,6 +67,7 @@ app.use(requestLogger)
 
 // register route files
 app.use(exampleRoutes)
+app.use(ingredientRoutes)
 app.use(userRoutes)
 
 // register error handling middleware

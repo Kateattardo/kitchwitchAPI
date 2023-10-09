@@ -2,11 +2,11 @@
 KitchWitch is a react app that allows users to submit ingredients that they have on hand and get recipes based on those ingredients using a third party API Spoonacular.
 
 # Technologies Used:
-Javascript 
-React.js
-Express
-MongoDB
-Bootstrap CSS
+-Javascript 
+-React.js
+-Express
+-MongoDB
+-Bootstrap CSS
 
 # User Stories
 
