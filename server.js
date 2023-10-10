@@ -4,9 +4,9 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 // require route files
-const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
-const ingredientRoutes = require('./app/routes/ingredient_routes')
+const recipeRoutes = require('./app/routes/recipe_routes')
+// const ingredientRoutes = require('./app/routes/ingredient_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -66,8 +66,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(requestLogger)
 
 // register route files
-app.use(exampleRoutes)
-app.use(ingredientRoutes)
+app.use(recipeRoutes);
 app.use(userRoutes)
 
 // register error handling middleware
