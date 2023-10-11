@@ -17,7 +17,7 @@ const router = express.Router()
 
 //create a recipe
 //POST/recipe/recipe_id
-router.post('/recipes', requireToken, removeBlanks, (req, res, next) => {
+router.post('/recipe', requireToken, removeBlanks, (req, res, next) => {
   const recipeData = req.body.recipe
   recipeData.owner = req.user.id;
 

@@ -5,8 +5,8 @@ const cors = require('cors')
 
 // require route files
 const userRoutes = require('./app/routes/user_routes')
-const recipeRoutes = require('./app/routes/recipe_routes')
-const commentRoutes = require('./app/routes/comment_routes')
+// const recipeRoutes = require('./app/routes/recipe_routes')
+// const commentRoutes = require('./app/routes/comment_routes')
 const spoonacularRoutes = require('./app/routes/spoonacular_routes')
 // const ingredientRoutes = require('./app/routes/ingredient_routes')
 
@@ -68,9 +68,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(requestLogger)
 
 // register route files
-app.use(recipeRoutes);
+// app.use(recipeRoutes);
 app.use(userRoutes);
-app.use('/comment', commentRoutes);
+// app.use('/comment', commentRoutes);
 app.use('/spoonacular', spoonacularRoutes)
 
 // register error handling middleware
