@@ -70,8 +70,8 @@ app.use(requestLogger)
 // register route files
 app.use(recipeRoutes);
 app.use(userRoutes);
-app.use(commentRoutes);
-app.use(spoonacularRoutes)
+app.use('/comment', commentRoutes);
+app.use('/spoonacular', spoonacularRoutes)
 
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be

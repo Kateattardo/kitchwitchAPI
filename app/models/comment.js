@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+//comment is subdocument
+//each comment with belong to 1 recipe
+//1 to many
 
 const commentSchema = new mongoose.Schema({
   note: {
@@ -16,4 +19,7 @@ const commentSchema = new mongoose.Schema({
     min: 1,
     max:5,
   },
-})
+}, { timestamps: true})
+
+
+module.exports = mongoose.model('Comment', commentSchema)

@@ -9,6 +9,8 @@ const removeBlanks = require('../../lib/remove_blank_fields');
 const requireToken = passport.authenticate('bearer', { session: false });
 
 const router = express.Router({ mergeParams: true });
+//Routes go here
+
 
 //Show for Comment
 router.get('/', (req, res, next) => {
@@ -29,15 +31,21 @@ router.get('/:commentId', (req, res, next) => {
 
 
 // Create for Comment
-router.post('/:recipeId/comments', requireToken, (req, res, next) => {
+//Post/recipeId/commentId
+router.post('/recipeId/comment'), requireToken, (req, res, next) => {
   const commentData = req.body.comment;
   commentData.author = req.user.id;
   commentData.recipe = req.params.recipeId;
 
-  Comment.create(commentData)
-      .then(comment => res.status(201).json({ comment }))
+  Comment.findById(commentData)
+      .then(handle404)
+      .then(comment => {
+        recipe.comments.push(comment)
+        return comment.save()
+      })
+      .then(comment => res.status(201).json({ comment: comment }))
       .catch(next);
-});
+};
 
 //UPDATE a comment
 router.patch('/:commentId', requireToken, removeBlanks, (req, res, next) => {
@@ -63,6 +71,9 @@ router.delete('/:commentId', requireToken, (req, res, next) => {
       .then(() => res.sendStatus(204))
       .catch(next);
 });
+
+/////////////////////////////
+////End of routes
 
 
 module.exports = router
