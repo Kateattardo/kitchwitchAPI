@@ -21,8 +21,8 @@ router.post('/recipe', requireToken, removeBlanks, (req, res, next) => {
   const recipeData = req.body.recipe
   recipeData.owner = req.user.id;
 
-  Recipe.create(recipeData)
-    .then(recipe => res.status(201).json({ recipe }))
+  Recipe.create(req.body.recipe)
+    .then(recipe => res.status(201).json({ recipe: recipe.toObject() }))
     .catch(next);
 })
 

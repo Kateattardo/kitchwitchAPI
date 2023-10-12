@@ -32,12 +32,13 @@ router.get('/:commentId', (req, res, next) => {
 
 // Create for Comment
 //Post/recipeId/commentId
-router.post('/recipeId/comment'), requireToken, (req, res, next) => {
-  const commentData = req.body.comment;
-  commentData.author = req.user.id;
-  commentData.recipe = req.params.recipeId;
+router.post('/recipeId/comment'), requireToken, removeBlanks, (req, res, next) => {
+  const comment = req.body.comment;
+  const comment.recipe = req.params.recipeId;
+  comment.author = req.user.id;
+  
 
-  Comment.findById(commentData)
+  Comment.findById(commentId)
       .then(handle404)
       .then(comment => {
         recipe.comments.push(comment)
@@ -49,24 +50,32 @@ router.post('/recipeId/comment'), requireToken, (req, res, next) => {
 
 //UPDATE a comment
 router.patch('/:commentId', requireToken, removeBlanks, (req, res, next) => {
-  delete req.body.comment.author;  
-  Comment.findById(req.params.commentId)
+  const recipeId = req.params.recipeIdId
+  const commentId = req.params.commentId
+
+  Recipe.findById(commentId)
       .then(handle404)
       .then(comment => {
-          requireOwnership(req, comment);  
-          return comment.updateOne(req.body.comment);
+          const theComment = recipe.comment.id(commentId)
+          requireOwnership(req, comment); 
+          theComment.set(req.body.comment) 
+          return comment.save();
       })
       .then(() => res.sendStatus(204))
       .catch(next);
 });
 
 //DELETE a comment
-router.delete('/:commentId', requireToken, (req, res, next) => {
-  Comment.findById(req.params.commentId)
+router.delete('/comment/:recipeId/:commentId', requireToken, removeBlanks, (req, res, next) => {
+  const recipeId = req.params.recipeId
+  const commentId = req.params.commentId
+  Recipe.findById(recipeId)
       .then(handle404)
       .then(comment => {
-          requireOwnership(req, comment);  // Ensure the user owns the comment
-          return comment.deleteOne();
+        const theComment = recipe.comments.id(commentId)
+        requireOwnership(req, comment);
+        theComment.deleteOne()  
+          return comment.save();
       })
       .then(() => res.sendStatus(204))
       .catch(next);
