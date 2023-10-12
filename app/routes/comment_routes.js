@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-const comment = require('../models/comment');
+const Comment = require('../models/comment');
 const Recipe = require('../models/recipe');
 const customErrors = require('../../lib/custom_errors');
 const handle404 = customErrors.handle404;
@@ -21,9 +21,9 @@ const router = express.Router({ mergeParams: true });
 // });
 
 //Show for single Comment
-router.get('/:commentId', (req, res, next) => {
-  Comment.findById(req.params.commentId)
-      .populate('author', 'username')
+router.get('/recipe/:recipeId/comment', (req, res, next) => {
+  Comment.find()
+      .populate('userId')
       .then(handle404)
       .then(comment => res.status(200).json({ comment }))
       .catch(next);
@@ -32,15 +32,15 @@ router.get('/:commentId', (req, res, next) => {
 
 // Create for Comment
 //Post/recipeId/commentId
-router.post('/test/:recipeId/comment'), requireToken, removeBlanks, (req, res, next) => {
+router.post('/recipe/:recipeId/comment', requireToken, removeBlanks, (req, res, next) => {
   const { comment } = req.body;
-  comment.recipe = req.params.recipeId;
-  comment.author = req.user.id;
+  comment.recipeId = req.params.recipeId;
+  comment.userId = req.user.id;
 
   Comment.create(comment)
   .then((newComment) => res.status(201).json({ comment: newComment }))
   .catch(next);
-};
+});
 
 // router.post('/recipeId/comment'), requireToken, removeBlanks, (req, res, next) => {
 //   const comment = req.body.comment;
@@ -63,7 +63,7 @@ router.patch('/:commentId', requireToken, removeBlanks, async (req, res, next) =
     const comment = await Comment.findById(req.params.commentId);
     handle404(comment); // Ensure the comment was found
     requireOwnership(req, comment);
-    Object.assign(comment, req.body.comment);
+    Object.assign(comment, req.body.commentId);
     await comment.save();
     res.sendStatus(204);
   } catch (error) {

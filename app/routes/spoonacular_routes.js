@@ -11,15 +11,6 @@ const requireToken = passport.authenticate('bearer', { session: false });
 
 const router = express.Router();
 
-router.get('/test/'), requireToken, removeBlanks, (req, res, next) => {
-    const { comment } = req.body;
-    // comment.recipe = req.params.recipeId;
-    // comment.author = req.user.id;
-  
-    Comment.create(comment)
-    .then((newComment) => res.status(201).json({ comment: newComment }))
-    .catch(next);
-  };
 
 router.get('/complex-search', async (req, res) => {
     const ingredients = req.query.ingredients;
