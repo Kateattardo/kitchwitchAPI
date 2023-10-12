@@ -8,6 +8,7 @@ const userRoutes = require('./app/routes/user_routes')
 // const recipeRoutes = require('./app/routes/recipe_routes')
 // const commentRoutes = require('./app/routes/comment_routes')
 const spoonacularRoutes = require('./app/routes/spoonacular_routes')
+const commentRoutes = require('./app/routes/comment_routes')
 // const ingredientRoutes = require('./app/routes/ingredient_routes')
 
 // require middleware
@@ -70,7 +71,7 @@ app.use(requestLogger)
 // register route files
 // app.use(recipeRoutes);
 app.use(userRoutes);
-// app.use('/comment', commentRoutes);
+app.use(commentRoutes);
 app.use('/spoonacular', spoonacularRoutes)
 
 // register error handling middleware

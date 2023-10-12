@@ -1,25 +1,20 @@
 const mongoose = require('mongoose');
-//comment is subdocument
-//each comment with belong to 1 recipe
-//1 to many
 
 const commentSchema = new mongoose.Schema({
-  note: {
-    type: String,
-    // required: true
-  },
-
-  owner: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true,
   },
-  
-  rating: {
-    type: Number,
-    min: 1,
-    max:5,
+  recipeId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Recipe',
+    required: true,
   },
-}, { timestamps: true})
+  text: {
+    type: String,
+    required: true,
+  },
+}, { timestamps: true });
 
-
-module.exports = mongoose.model('Comment', commentSchema)
+module.exports = mongoose.model('Comment', commentSchema);
