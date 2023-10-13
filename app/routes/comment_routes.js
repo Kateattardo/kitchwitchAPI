@@ -20,9 +20,9 @@ const router = express.Router({ mergeParams: true });
 //       .catch(next);
 // });
 
-//Show for single Comment
+//Show all comments for a single recipe
 router.get('/recipe/:recipeId/comment', (req, res, next) => {
-  Comment.find()
+  Comment.find({ recipeId: req.params.recipeId })
       .populate('userId')
       .then(handle404)
       .then(comment => res.status(200).json({ comment }))
@@ -58,12 +58,14 @@ router.post('/recipe/:recipeId/comment', requireToken, removeBlanks, (req, res, 
 // };
 
 //UPDATE a comment
-router.patch('/:commentId', requireToken, removeBlanks, async (req, res, next) => {
+router.patch('/comment/:commentId', requireToken, removeBlanks, async (req, res, next) => {
   try {
+    console.log('req.user', req.user)
     const comment = await Comment.findById(req.params.commentId);
+    console.log('comment:', comment)
     handle404(comment); // Ensure the comment was found
     requireOwnership(req, comment);
-    Object.assign(comment, req.body.commentId);
+    Object.assign(comment, { text: req.body.commentText });
     await comment.save();
     res.sendStatus(204);
   } catch (error) {
