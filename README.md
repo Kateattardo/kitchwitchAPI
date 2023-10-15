@@ -1,8 +1,10 @@
 # OVERVIEW
+
 KitchWitch is a react app that allows users to submit ingredients that they have on hand and get recipes based on those ingredients using a third party API Spoonacular.
 
 # Technologies Used:
--Javascript 
+
+-Javascript
 -React.js
 -Express
 -MongoDB
@@ -32,70 +34,60 @@ KitchWitch is a react app that allows users to submit ingredients that they have
 
 -As a user I want the option to uplad a photo of the dish I have completed.
 
-# WIREFRAMES
-![Wireframe 1](app/images/WF1.jpg)
-![Wireframe 2](app/images/WF%202.jpg)
-![Wireframe 3](app/images/WF3.jpg)
-![Wireframe 4](app/images/WF4.jpg)
-![Wireframe 5](app/images/WF5.jpg)
-
-
 # ERD
 
-![Alt text](app/images/KW%20ERD.jpg)
+![Alt text](app/images/ERD.jpg)
 
 # API/ Authentication
 
-
 Using Curl Scripts with Postman to test Authentication and CRUD
 
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/sign-up`             | `users#signup`    |
-| POST   | `/sign-in`             | `users#signin`    |
+| Verb   | URI Pattern         | Controller#Action |
+| ------ | ------------------- | ----------------- |
+| POST   | `/sign-up`          | `users#signup`    |
+| POST   | `/sign-in`          | `users#signin`    |
 | PATCH  | `/change-password/` | `users#changepw`  |
 | DELETE | `/sign-out/`        | `users#signout`   |
 
-#### Recommended Request bodies 
+#### Recommended Request bodies
 
 Request - users#signup:
 
 ```json
 {
-    "credentials": {
-      "email": "an@example.email",
-      "password": "an example password",
-      "password_confirmation": "an example password"
-    }
+  "credentials": {
+    "email": "an@example.email",
+    "password": "an example password",
+    "password_confirmation": "an example password"
+  }
 }
 ```
+
 ### Recipes
 
 | Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| GET   | `/recipes`             | `recipes#index`    |
-| GET   | `/recipes/<recipe_id>`    | `recipes#show`    |
-| POST   | `/recipes`             | `recipes#create`    |
+| ------ | ---------------------- | ----------------- |
+| GET    | `/recipes`             | `recipes#index`   |
+| GET    | `/recipes/<recipe_id>` | `recipes#show`    |
+| POST   | `/recipes`             | `recipes#create`  |
 | PATCH  | `/recipes/<recipe_id>` | `recipes#update`  |
-| DELETE | `/recipes/<recipe_id>`        | `recipes#delete`   |
+| DELETE | `/recipes/<recipe_id>` | `recipes#delete`  |
 
 ### Comments
 
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/comments/<comment_id>`             | `comments#create`    |
-| PATCH  | `/comments/<comment_id>/<comment_id>` | `comments#update`  |
-| DELETE | `/comments/<comment_id>/<comment_id>`        | `comments#delete`   |
-
+| Verb   | URI Pattern                           | Controller#Action |
+| ------ | ------------------------------------- | ----------------- |
+| POST   | `/comments/<comment_id>`              | `comments#create` |
+| PATCH  | `/comments/<comment_id>/<comment_id>` | `comments#update` |
+| DELETE | `/comments/<comment_id>/<comment_id>` | `comments#delete` |
 
 ### Token Auth Strategy
 
 Send the token as `Bearer Token <token>`
 
-
-
 # API/spoonacular third party API to send recipes
-``````
+
+```
 GET https://api.spoonacular.com/food/ingredients/search?query=banana&number=2&sort=calories&sortDirection=desc
 
 {
@@ -115,3 +107,4 @@ GET https://api.spoonacular.com/food/ingredients/search?query=banana&number=2&so
     "number": 2,
     "totalResults": 13
 }
+```
