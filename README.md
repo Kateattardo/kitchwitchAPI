@@ -14,7 +14,11 @@ KitchWitch is a react app that allows users to submit ingredients that they have
 
 -As a user, I want to sign up for an account to access KitchWitch.
 
--As a user, I want to log in to my account and see my saved recipes and comments.
+-As a user, I want to sign out of my KitchWitch account.
+
+-As a user, I want to be able to change my password.
+
+-As a user, I want to log in to my account and see my recipes and comments.
 
 -As a user, I want to search for recipes based on ingredients I have at home already.
 
@@ -22,13 +26,13 @@ KitchWitch is a react app that allows users to submit ingredients that they have
 
 -As a user, I want to see a list of my favorite recipes so I can access it quickly.
 
--As a user, I want to create recipes using the info from the app.
+# ICEBOX
+
+-As a user, I want to see a list of my favorite recipes so I can access it quickly.
 
 -As a user, I want to delete recipes from my favorites if I am no longer interested in them.
 
 -As a user, I want to rate recipes based on my level of enjoyment.
-
-# ICEBOX
 
 -As a user, I want to set a timer to ensure correct cook time.
 
@@ -56,9 +60,9 @@ Request - users#signup:
 ```json
 {
   "credentials": {
-    "email": "an@example.email",
-    "password": "an example password",
-    "password_confirmation": "an example password"
+    "email": "an@.email",
+    "password": "a password",
+    "password_confirmation": "a password"
   }
 }
 ```
