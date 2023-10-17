@@ -1,17 +1,17 @@
-# fly.toml app configuration file generated for kitchwitchapi on 2023-10-13T15:26:41-04:00
+# fly.toml app configuration file generated for kitchwitch on 2023-10-16T09:26:10-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "kitchwitchapi"
+app = "kitchwitch"
 primary_region = "bos"
 
 [build]
 
 [env]
-  MONGODB_UR = "mongodb+srv://Katea:D%40ffodil0525@cluster0.wkyeaf7.mongodb.net/kitchwitch?retryWrites=true&w=majority"
-  SPOONACULAR_API_KEY = "3cd6c4c681b04b90aebf96d2f0abc78e"
-  PORT = "8080"
+MONGODB_URI = "mongodb+srv://Katea:D%40ffodil0525@cluster0.wkyeaf7.mongodb.net/kitchwitch?retryWrites=true&w=majority"
+SPOONACULAR_API_KEY = "00c26da1de49465c948d6edac64c0505"
+PORT=8080
 
 [http_service]
   internal_port = 8080
